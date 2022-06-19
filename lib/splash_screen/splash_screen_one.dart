@@ -88,7 +88,6 @@ class _SplashScreenOneState extends State<SplashScreenOne>
                   ),
                 ),
               ),
-
             ],
           ),
           Center(
