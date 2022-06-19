@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../../component/component.dart';
+
+
 
 AppBar HomeScreenAppBar(BuildContext context) {
   return AppBar(
@@ -33,8 +36,11 @@ AppBar HomeScreenAppBar(BuildContext context) {
     actions: <Widget>[
       IconButton(
         icon: Image.asset("assets/icon/wallpy.png"),
-        onPressed: () {},
+        onPressed: () {
+          debugPrint("Sign Out");
+        },
       ),
     ],
   );
 }
+

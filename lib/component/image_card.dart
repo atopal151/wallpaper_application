@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_application/screen/details/details_page.dart';
 
 class ImageCard extends StatelessWidget {
-  const ImageCard({Key? key, required this.image_path}) : super(key: key);
+  const ImageCard({Key? key, required this.image_path, required this.tag}) : super(key: key);
 
   final String image_path;
+  final String tag;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,10 @@ class ImageCard extends StatelessWidget {
         debugPrint("Resme Basıldı");
         Navigator.of(context).push(
           MaterialPageRoute(
-              builder: (context) => DetailsPage(imgPath: image_path)),
+              builder: (context) => DetailsPage(
+                    imgPath: image_path,
+                    tag: tag,
+                  )),
         );
       },
       child: Hero(
