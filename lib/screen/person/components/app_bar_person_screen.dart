@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../component/component.dart';
 
-
-
 AppBar PersonScreenAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
-
+    automaticallyImplyLeading: false,
     title: Container(
       decoration: const BoxDecoration(
         border: Border(
@@ -15,7 +13,6 @@ AppBar PersonScreenAppBar(BuildContext context) {
             color: kPrimaryTwoColor,
             width: 3.0,
           ),
-
         ),
       ),
       child: RichText(
@@ -29,11 +26,9 @@ AppBar PersonScreenAppBar(BuildContext context) {
               text: " Profile",
               style: TextStyle(color: kTextColor),
             ),
-
           ],
         ),
       ),
     ),
-
   );
 }

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
+import 'screen/get_started_screen/get_started.dart';
 import 'sign_page/sign_in_page.dart';
 import 'splash_screen/splash_screen_one.dart';
 

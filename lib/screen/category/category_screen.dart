@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../component/component.dart';
 import 'components/app_bar_category_screen.dart';
 
-
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({Key? key}) : super(key: key);
 
@@ -17,7 +16,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       backgroundColor: kTextWhiteColor,
       appBar: CategoryScreenAppBar(context),
-      body: Center(
+      body: const Center(
         child: Text("Category Screen"),
       ),
     );

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../component/component.dart';
 
-
-
 AppBar FavortieScreenAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
-
+    automaticallyImplyLeading: false,
     title: Container(
       decoration: const BoxDecoration(
         border: Border(
@@ -15,7 +13,6 @@ AppBar FavortieScreenAppBar(BuildContext context) {
             color: kPrimaryTwoColor,
             width: 3.0,
           ),
-
         ),
       ),
       child: RichText(
@@ -29,11 +26,9 @@ AppBar FavortieScreenAppBar(BuildContext context) {
               text: " Favorites",
               style: TextStyle(color: kTextColor),
             ),
-
           ],
         ),
       ),
     ),
-
   );
 }

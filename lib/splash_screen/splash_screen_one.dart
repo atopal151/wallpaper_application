@@ -68,7 +68,7 @@ class _SplashScreenOneState extends State<SplashScreenOne>
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: kPrimaryColor,
-           body: Stack(
+      body: Stack(
         children: [
           Column(
             children: [
@@ -102,7 +102,7 @@ class _SplashScreenOneState extends State<SplashScreenOne>
                 height: width / _containerSize,
                 width: width / _containerSize,
                 alignment: Alignment.center,
-                child:  Image.asset('assets/icon/wallpy.png'),
+                child: Image.asset('assets/icon/wallpy.png'),
               ),
             ),
           ),
@@ -132,4 +132,3 @@ class PageTransitions1 extends PageRouteBuilder {
               );
             });
 }
-

@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: kTextWhiteColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         title: Container(
@@ -54,12 +55,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Image.asset("assets/icon/wallpy.png"),
-            onPressed: () {
-              gmailOutUser();
-              debugPrint("Sign Out");
-            },
+          Column(
+            children: [
+              IconButton(
+                icon: Image.asset("assets/icon/logout.png"),
+                onPressed: () {
+                  gmailOutUser();
+                  debugPrint("Sign Out");
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -134,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
       await GoogleSignIn().currentUser!;
     }
     await auth.signOut();
-     Navigator.push(
+    Navigator.push(
         context, MaterialPageRoute(builder: (context) => SignInPage()));
     //direkt olarak uygulamayı kapatıyor.
     //SystemNavigator.pop();

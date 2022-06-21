@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../component/component.dart';
 
-
-
 AppBar HomeScreenAppBar(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
     backgroundColor: Colors.white,
     elevation: 0,
     title: Container(
@@ -43,4 +42,3 @@ AppBar HomeScreenAppBar(BuildContext context) {
     ],
   );
 }
-

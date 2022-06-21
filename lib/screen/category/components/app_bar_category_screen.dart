@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../component/component.dart';
 
-
-
 AppBar CategoryScreenAppBar(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
     backgroundColor: Colors.white,
     elevation: 0,
-
     title: Container(
       decoration: const BoxDecoration(
         border: Border(
@@ -15,7 +13,6 @@ AppBar CategoryScreenAppBar(BuildContext context) {
             color: kPrimaryTwoColor,
             width: 3.0,
           ),
-
         ),
       ),
       child: RichText(
@@ -29,11 +26,9 @@ AppBar CategoryScreenAppBar(BuildContext context) {
               text: " Categories",
               style: TextStyle(color: kTextColor),
             ),
-
           ],
         ),
       ),
     ),
-
   );
 }
