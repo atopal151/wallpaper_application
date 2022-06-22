@@ -14,7 +14,7 @@ class _ImageCardState extends State<ImageCard> {
     return Hero(
       tag: widget.image_path,
       child: Container(
-        height: 300,
+        height: 600,
         width: (MediaQuery.of(context).size.width - 40) / 2,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
@@ -22,7 +22,6 @@ class _ImageCardState extends State<ImageCard> {
                 fit: BoxFit.cover, image: AssetImage(widget.image_path))),
         child: InkWell(
           onTap: () {
-            debugPrint("Resme Basıldı");
             Navigator.of(context).push(
               MaterialPageRoute(
                   builder: (context) => DetailsPage(
