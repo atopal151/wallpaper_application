@@ -17,6 +17,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late FirebaseAuth auth;
 
+  List<String> imgList = [
+    "assets/images/img.jpg",
+    "assets/images/img1.jpg",
+    "assets/images/img2.jpg",
+    "assets/images/img3.jpg",
+    "assets/images/img4.jpg",
+    "assets/images/img5.jpg",
+    "assets/images/img6.jpg",
+    "assets/images/img7.jpg",
+    "assets/images/img8.jpg",
+    "assets/images/img5.jpg",
+  ];
+
   void initState() {
     super.initState();
     auth = FirebaseAuth.instance;
@@ -58,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Column(
             children: [
               IconButton(
-                icon: Image.asset("assets/icon/logout.png"),
+                icon: Image.asset("assets/icon/wallpy.png"),
                 onPressed: () {
                   gmailOutUser();
                   debugPrint("Sign Out");
@@ -68,66 +81,21 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  ImageCard(
-                    tag: "tag5",
-                    image_path: 'assets/images/image.jpg',
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  ImageCard(
-                    tag: "tag6",
-                    image_path: 'assets/images/image.jpg',
-                  ),
-                ],
+      body: GridView.count(
+        crossAxisCount: 2,
+        scrollDirection: Axis.vertical,
+        children: List.generate(
+          imgList.length,
+          ((index) {
+            return Center(
+              child: Container(
+                padding: const EdgeInsets.all(8.0),
+                child: ImageCard(
+                  image_path: imgList[index],
+                ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  ImageCard(
-                    image_path: 'assets/images/image.jpg',
-                    tag: "tag1",
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  ImageCard(
-                    tag: "tag2",
-                    image_path: 'assets/images/image.jpg',
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  ImageCard(
-                    tag: "tag3",
-                    image_path: 'assets/images/image.jpg',
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  ImageCard(
-                    tag: "tag4",
-                    image_path: 'assets/images/image.jpg',
-                  ),
-                ],
-              ),
-            ],
-          ),
+            );
+          }),
         ),
       ),
     );
@@ -145,3 +113,37 @@ class _HomeScreenState extends State<HomeScreen> {
     //SystemNavigator.pop();
   }
 }
+
+
+
+
+
+
+/*
+
+
+InkWell(
+                            //bu bizim conteinirimizi tıklanabilir hale getirecektir...
+                            onTap: () {
+                              debugPrint("Resme Basıldı");
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => Detay(
+                                        imgPath: "assets/modelgrid1.jpeg")),
+                              );
+                            },
+                            child: Hero(
+                              tag: "assets/modelgrid1.jpeg",
+                              child: Container(
+                                  height: 200,
+                                  width: (MediaQuery.of(context).size.width -
+                                          100) /
+                                      2,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              "assets/modelgrid1.jpeg")))),
+                            ),
+                          ),*/
