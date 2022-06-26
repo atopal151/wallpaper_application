@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:wallpaper_application/component/component.dart';
 import 'package:wallpaper_application/screen/category/category_screen.dart';
 import 'package:wallpaper_application/screen/favorite/favorite_screen.dart';
 import 'package:wallpaper_application/screen/person/person_screen.dart';
 import '../screen/home/home_screen.dart';
-
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -15,7 +13,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     CategoryScreen(),
     FavoriteScreen(),
@@ -57,8 +55,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   child: const Icon(Icons.home),
                 )),
             BottomNavigationBarItem(
-                icon: const Icon(Icons.category_outlined,
-                    color: Colors.black26),
+                icon:
+                    const Icon(Icons.category_outlined, color: Colors.black26),
                 label: "",
                 activeIcon: Container(
                   decoration: BoxDecoration(
