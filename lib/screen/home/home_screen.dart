@@ -2,12 +2,27 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:wallpaper_application/component/firebase_wallpaper_get.dart';
 import 'package:wallpaper_application/component/image_card.dart';
 import 'package:wallpaper_application/sign_page/sign_in_page.dart';
 import '../../component/component.dart';
 import 'components/app_bar_home_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: kTextWhiteColor,
+      appBar: HomeScreenAppBar(context),
+      body: Center(
+        child: FirebaseGetImage(),
+      ),
+    );
+  }
+}
+/*class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -118,3 +133,4 @@ class _HomeScreenState extends State<HomeScreen> {
     //SystemNavigator.pop();
   }
 }
+*/

@@ -13,11 +13,11 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     CategoryScreen(),
     FavoriteScreen(),
-    PersonScreen(),
+    PersonScreen()
   ];
 
   void _onItemTapped(int index) {
