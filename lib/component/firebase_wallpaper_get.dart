@@ -5,10 +5,16 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class FirebaseGetImage extends StatefulWidget {
   const FirebaseGetImage(
-      {Key? key, required this.file_path, required this.column_count})
+      {Key? key,
+      required this.file_path,
+      required this.column_count,
+      required this.width,
+      required this.heigth})
       : super(key: key);
   final String file_path;
   final int column_count;
+  final double width;
+  final double heigth;
   @override
   _FirebaseGetImageState createState() => _FirebaseGetImageState();
 }
@@ -55,8 +61,8 @@ class _FirebaseGetImageState extends State<FirebaseGetImage> {
             ((index) {
               print("işlem burada ");
               return Container(
-                height: 500,
-                width: 250,
+                height: widget.heigth,
+                width: widget.width,
                 padding: const EdgeInsets.all(8.0),
                 child: FutureBuilder<dynamic>(
                   future: firebase_storage.FirebaseStorage.instance

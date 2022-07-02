@@ -20,6 +20,8 @@ class HomeScreen extends StatelessWidget {
         child: FirebaseGetImage(
           file_path: "wallpaper",
           column_count: 2,
+          heigth: 500,
+          width: 250,
         ),
       ),
     );

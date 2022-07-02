@@ -53,6 +53,7 @@ class _PersonScreenState extends State<PersonScreen> {
                   height: 10,
                 ),
                 CircleAvatar(
+                  backgroundColor: Colors.white,
                   radius: 60,
                   backgroundImage: NetworkImage(photo_url),
                 ),
@@ -77,6 +78,8 @@ class _PersonScreenState extends State<PersonScreen> {
               child: FirebaseGetImage(
                 file_path: "users",
                 column_count: 3,
+                heigth: 250,
+                width: 250,
               ),
             ),
           )

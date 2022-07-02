@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_application/component/component.dart';
-import 'package:wallpaper_application/screen/category/category_screen.dart';
 import 'package:wallpaper_application/screen/favorite/favorite_screen.dart';
 import 'package:wallpaper_application/screen/person/person_screen.dart';
 import '../screen/home/home_screen.dart';
@@ -15,7 +14,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    CategoryScreen(),
     FavoriteScreen(),
     PersonScreen()
   ];
@@ -53,20 +51,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     ],
                   ),
                   child: const Icon(Icons.home),
-                )),
-            BottomNavigationBarItem(
-                icon:
-                    const Icon(Icons.category_outlined, color: Colors.black26),
-                label: "",
-                activeIcon: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: const [
-                      BoxShadow(color: Colors.white),
-                      //offset:Offset(0,4),
-                    ],
-                  ),
-                  child: const Icon(Icons.category),
                 )),
             BottomNavigationBarItem(
                 icon: const Icon(Icons.favorite_border_outlined,

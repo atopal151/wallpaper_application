@@ -20,6 +20,8 @@ class FavoriteScreen extends StatelessWidget {
         child: FirebaseGetImage(
           file_path: "users",
           column_count: 2,
+          heigth: 500,
+          width: 250,
         ),
       ),
     );
