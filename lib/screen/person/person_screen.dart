@@ -1,17 +1,18 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wallpaper_application/component/component.dart';
-
-import 'components/app_bar_person_screen.dart';
+import 'package:wallpaper_application/screen/person/components/app_bar_person_screen.dart';
+import '../../component/firebase_wallpaper_get.dart';
 
 class PersonScreen extends StatefulWidget {
-  PersonScreen({Key? key}) : super(key: key);
+  const PersonScreen({Key? key}) : super(key: key);
 
   @override
   State<PersonScreen> createState() => _PersonScreenState();
@@ -20,115 +21,84 @@ class PersonScreen extends StatefulWidget {
 class _PersonScreenState extends State<PersonScreen> {
   final picker = ImagePicker();
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  //late final File _imageFile;
-
-  /*void initState() {
+  late FirebaseAuth auth;
+  late String mailaddress;
+  // ignore: non_constant_identifier_names
+  late String photo_url;
+  late String name;
+  @override
+  void initState() {
+    // TODO: implement initState
     super.initState();
-    Firebase.initializeApp().whenComplete(() {
-      print("completed");
-      setState(() {});
-    });
+    auth = FirebaseAuth.instance;
+    mailaddress = auth.currentUser!.email!;
+    photo_url = auth.currentUser!.photoURL!;
+    name = auth.currentUser!.displayName!;
   }
-
-  Future pickImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    setState(() {
-      var _imageFile = File(pickedFile!.path);
-    });
-  }
-
-  Future deleteImage(BuildContext context) async {
-    String fileName = _imageFile.path;
-    firebase_storage.Reference firebaseStorageRef =
-        firebase_storage.FirebaseStorage.instance.ref().child('$fileName');
-    await firebaseStorageRef.delete();
-  }
-
-  Future uploadImage(BuildContext context) async {
-    String fileName = _imageFile
-        .path; // dosya yolunu bir değişkene tanımlıyoruz. - we define the file path of a variable.
-    firebase_storage.Reference firebaseStorageRef =
-        firebase_storage.FirebaseStorage.instance.ref().child(
-            '$fileName'); // fotoğraf için oluşturduğumuz değişkene bir referans tanımlıyoruz.- we define a reference to the variable we have created for the photo.
-    firebase_storage.UploadTask uploadTask =
-        firebaseStorageRef.putFile(_imageFile);
-    firebase_storage.TaskSnapshot taskSnapshot =
-        await uploadTask; // fotoğraf yükleme işlemini gerçekleştiriyoruz. - we perform the process of uploading photos.
-    taskSnapshot.ref.getDownloadURL().then(
-          (value) => print("Completed: $value"),
-        ); // dosya yolunu görmek adına debug konsola yazdırıyoruz. - we print the debug to the console to see the file path.
-  }*/
 
   @override
   Widget build(BuildContext context) {
     debugPrint(_firestore.collection("users").id);
     debugPrint(_firestore.collection("users").doc().id);
     return Scaffold(
-      appBar: PersonScreenAppBar(context),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => imageUpload(),
-              style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-              child: const Text("Kamera Galeri Image Upload"),
+      appBar: PersonScreenAppBar(context, mailaddress),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: NetworkImage(photo_url),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Center(
+                    child: Text(
+                  name,
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                )),
+                SizedBox(
+                  height: 10,
+                ),
+                // Center(child: Text(mailaddress)),
+              ],
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  /*TextButton deleteImageButton(BuildContext context) {
-    return TextButton(
-        onPressed: () => deleteImage(context),
-        child: const Text(
-          "Delete Photo",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
           ),
-        ));
-  }
-
-  TextButton uploadImageButton(BuildContext context) {
-    return TextButton(
-      onPressed: () => uploadImage(context),
-      child: const Text(
-        "Upload Photo",
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.green,
+          const Expanded(
+            flex: 2,
+            child: Center(
+              child: FirebaseGetImage(
+                file_path: "users",
+                column_count: 3,
+              ),
+            ),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () {
+          imageUpload();
+        },
+        child: const Icon(
+          Icons.photo,
+          color: kPrimaryColor,
         ),
       ),
     );
   }
-
-  Container photoAddContainer() {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        height: 500,
-        width: 500,
-        child: _imageFile != null
-            ? Image.file(_imageFile)
-            : TextButton(
-                onPressed: pickImage,
-                child: const Text(
-                  "Photo Add",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )));
-  }*/
 
   imageUpload() async {
     final ImagePicker _picker = ImagePicker();
 
-    XFile? _file = await _picker.pickImage(source: ImageSource.camera);
+    XFile? _file = await _picker.pickImage(source: ImageSource.gallery);
     var _profileRef = FirebaseStorage.instance
         .ref('users/' + _firestore.collection("users").doc().id);
     var _task = _profileRef.putFile(File(_file!.path));
@@ -142,53 +112,3 @@ class _PersonScreenState extends State<PersonScreen> {
     });
   }
 }
-
-/*
-Scaffold(
-      
-      body: Column(
-        children: [
-          /*photoAddContainer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              uploadImageButton(context),
-              deleteImageButton(context),
-            ],
-          ),*/
-          Row(
-            children: [
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    imageUpload();
-                  },
-                  child: Text("Upload Image Firestore"),
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-
- */
-
-/*
-Scaffold(
-      appBar: PersonScreenAppBar(context),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => imageUpload(),
-              style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-              child: const Text("Kamera Galeri Image Upload"),
-            ),
-          ],
-        ),
-      ),
-    );
-
- */

@@ -3,8 +3,12 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-
 class FirebaseGetImage extends StatefulWidget {
+  const FirebaseGetImage(
+      {Key? key, required this.file_path, required this.column_count})
+      : super(key: key);
+  final String file_path;
+  final int column_count;
   @override
   _FirebaseGetImageState createState() => _FirebaseGetImageState();
 }
@@ -17,7 +21,7 @@ class _FirebaseGetImageState extends State<FirebaseGetImage> {
   Future<void> getImage() async {
     final result = await firebase_storage.FirebaseStorage.instance
         .ref()
-        .child("wallpaper")
+        .child(widget.file_path)
         .listAll();
     result.items.forEach((firebase_storage.Reference ref) {
       imgList
@@ -43,7 +47,7 @@ class _FirebaseGetImageState extends State<FirebaseGetImage> {
     return Scaffold(
       body: Container(
         child: GridView.count(
-          crossAxisCount: 2,
+          crossAxisCount: widget.column_count,
           childAspectRatio: (itemWidth / itemHeight),
           scrollDirection: Axis.vertical,
           children: List.generate(

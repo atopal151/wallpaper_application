@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../component/component.dart';
 
-AppBar PersonScreenAppBar(BuildContext context) {
+AppBar PersonScreenAppBar(BuildContext context, String name) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
@@ -21,9 +21,9 @@ AppBar PersonScreenAppBar(BuildContext context) {
               .textTheme
               .headline6!
               .copyWith(fontWeight: FontWeight.bold),
-          children: const [
+          children: [
             TextSpan(
-              text: " Profile",
+              text: " $name",
               style: TextStyle(color: kTextColor),
             ),
           ],

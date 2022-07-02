@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:wallpaper_application/component/firebase_wallpaper_get.dart';
 import '../../component/component.dart';
 import 'components/app_bar_favorite_screen.dart';
 
@@ -15,8 +16,11 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kTextWhiteColor,
       appBar: FavortieScreenAppBar(context),
-      body: Center(
-        child: MyHomePage(),
+      body: const Center(
+        child: FirebaseGetImage(
+          file_path: "users",
+          column_count: 2,
+        ),
       ),
     );
   }
@@ -35,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> getImage() async {
     final result = await firebase_storage.FirebaseStorage.instance
         .ref()
-        .child("wallpaper")
+        .child("users")
         .listAll();
     result.items.forEach((firebase_storage.Reference ref) {
       imgList

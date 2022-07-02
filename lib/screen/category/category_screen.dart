@@ -22,7 +22,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           alignment: Alignment.center,
           child: Column(
             children: const [
-              CategoriesCard(
+              /* CategoriesCard(
                 image_path: "assets/images/img1.jpg",
               ),
               SizedBox(
@@ -48,7 +48,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               ),
               CategoriesCard(
                 image_path: "assets/images/img4.jpg",
-              ),
+              ),*/
             ],
           ),
         ),
