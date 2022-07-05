@@ -17,13 +17,11 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: kTextWhiteColor,
       appBar: HomeScreenAppBar(context),
       body: const Center(
-        child: FirebaseGetImage(
-          file_path: "wallpaper",
-          column_count: 2,
-          heigth: 500,
-          width: 250,
-        ),
-      ),
+          child: GetImageDatabase(
+        column_count: 2,
+        heigth: 500,
+        width: 250,
+      )),
     );
   }
 }

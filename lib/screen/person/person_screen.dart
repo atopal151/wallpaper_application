@@ -41,7 +41,7 @@ class _PersonScreenState extends State<PersonScreen> {
     debugPrint(_firestore.collection("users").id);
     debugPrint(_firestore.collection("users").doc().id);
     return Scaffold(
-      appBar: PersonScreenAppBar(context, mailaddress),
+      appBar: PersonScreenAppBar(context, name),
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -63,12 +63,18 @@ class _PersonScreenState extends State<PersonScreen> {
                 Center(
                     child: Text(
                   name,
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600, fontSize: 17),
                 )),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                // Center(child: Text(mailaddress)),
+                Center(
+                    child: Text(
+                  mailaddress,
+                  style: const TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.w400),
+                )),
               ],
             ),
           ),
@@ -108,9 +114,11 @@ class _PersonScreenState extends State<PersonScreen> {
 
     _task.whenComplete(() async {
       var _url = await _profileRef.getDownloadURL();
-      _firestore
-          .doc('users/' + _firestore.collection("users").doc().id)
-          .set({'profile_pic': _url.toString()}, SetOptions(merge: true));
+      _firestore.doc('users/' + _firestore.collection("users").doc().id).set({
+        'profile_pic': _url.toString(),
+        'shareuid': auth.currentUser!.uid.toString()
+      }, SetOptions(merge: true));
+
       debugPrint(_url);
     });
   }

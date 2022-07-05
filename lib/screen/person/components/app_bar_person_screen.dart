@@ -30,5 +30,13 @@ AppBar PersonScreenAppBar(BuildContext context, String name) {
         ),
       ),
     ),
+    actions: <Widget>[
+      IconButton(
+        icon: Image.asset("assets/icon/closeicon.png"),
+        onPressed: () {
+          debugPrint("Sign Out");
+        },
+      ),
+    ],
   );
 }

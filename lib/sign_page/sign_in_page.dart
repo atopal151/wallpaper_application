@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wallpaper_application/splash_screen/splash_screen_one.dart';
-
 import '../component/bottom_nav_bar.dart';
 
 class SignInPage extends StatefulWidget {
