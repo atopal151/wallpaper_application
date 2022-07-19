@@ -38,8 +38,8 @@ class _PersonScreenState extends State<PersonScreen> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(_firestore.collection("users").id);
-    debugPrint(_firestore.collection("users").doc().id);
+    debugPrint(_firestore.collection("wallpapers").id);
+    debugPrint(_firestore.collection("wallpapers").doc().id);
     return Scaffold(
       appBar: PersonScreenAppBar(context, name),
       backgroundColor: Colors.white,
@@ -109,14 +109,16 @@ class _PersonScreenState extends State<PersonScreen> {
 
     XFile? _file = await _picker.pickImage(source: ImageSource.gallery);
     var _profileRef = FirebaseStorage.instance
-        .ref('users/' + _firestore.collection("users").doc().id);
+        .ref('wallpapers/' + _firestore.collection("wallpapers").doc().id);
     var _task = _profileRef.putFile(File(_file!.path));
 
     _task.whenComplete(() async {
       var _url = await _profileRef.getDownloadURL();
-      _firestore.doc('users/' + _firestore.collection("users").doc().id).set({
-        'profile_pic': _url.toString(),
-        'shareuid': auth.currentUser!.uid.toString()
+      _firestore
+          .doc('wallpapers/' + _firestore.collection("wallpapers").doc().id)
+          .set({
+        'wallpaper_pic': _url.toString(),
+        'shareuid': auth.currentUser!.email.toString()
       }, SetOptions(merge: true));
 
       debugPrint(_url);

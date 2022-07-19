@@ -35,20 +35,20 @@ class _SplashScreenOneState extends State<SplashScreenOne>
       });
     _controller.forward();
 
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 1), () {
       setState(() {
         _fontSize = 1.06;
       });
     });
 
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 1), () {
       setState(() {
         _containerSize = 2;
         _containerOpacity = 1;
       });
     });
 
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 2), () {
       setState(() {
         Navigator.pushReplacement(
             context, PageTransitions1(const BottomNavBar()));
@@ -73,13 +73,13 @@ class _SplashScreenOneState extends State<SplashScreenOne>
           Column(
             children: [
               AnimatedContainer(
-                duration: const Duration(milliseconds: 2000),
+                duration: const Duration(milliseconds: 1000),
                 curve: Curves.fastLinearToSlowEaseIn,
                 height: height / _fontSize,
               ),
               AnimatedOpacity(
                 opacity: _textOpacity,
-                duration: const Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 500),
                 child: Text(
                   "Wall Back",
                   style: TextStyle(
@@ -93,11 +93,11 @@ class _SplashScreenOneState extends State<SplashScreenOne>
           ),
           Center(
             child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 2000),
+              duration: const Duration(milliseconds: 1000),
               curve: Curves.fastLinearToSlowEaseIn,
               opacity: _containerOpacity,
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 2000),
+                duration: const Duration(milliseconds: 1000),
                 curve: Curves.fastLinearToSlowEaseIn,
                 height: width / _containerSize,
                 width: width / _containerSize,
@@ -118,7 +118,7 @@ class PageTransitions1 extends PageRouteBuilder {
   PageTransitions1(this.page)
       : super(
             pageBuilder: (context, animation, anotherAnimation) => page,
-            transitionDuration: const Duration(milliseconds: 2000),
+            transitionDuration: const Duration(milliseconds: 1000),
             transitionsBuilder: (context, animation, anotherAnimation, child) {
               animation = CurvedAnimation(
                   parent: animation, curve: Curves.fastLinearToSlowEaseIn);

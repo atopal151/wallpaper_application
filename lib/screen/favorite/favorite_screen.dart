@@ -16,14 +16,7 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kTextWhiteColor,
       appBar: FavortieScreenAppBar(context),
-      body: const Center(
-        child: FirebaseGetImage(
-          file_path: "users",
-          column_count: 2,
-          heigth: 500,
-          width: 250,
-        ),
-      ),
+      body: const Center(),
     );
   }
 }
