@@ -20,7 +20,7 @@ class _DetailsPageState extends State<DetailsPage> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-            image: AssetImage(widget.imgPath),
+            image: NetworkImage(widget.imgPath),
             fit: BoxFit.cover,
           )),
           child: Center(

@@ -81,8 +81,7 @@ class _PersonScreenState extends State<PersonScreen> {
           const Expanded(
             flex: 2,
             child: Center(
-              child: FirebaseGetImage(
-                file_path: "users",
+              child: GetImageDatabase(
                 column_count: 3,
                 heigth: 250,
                 width: 250,
@@ -95,6 +94,7 @@ class _PersonScreenState extends State<PersonScreen> {
         backgroundColor: Colors.white,
         onPressed: () {
           imageUpload();
+          setState(() {});
         },
         child: const Icon(
           Icons.photo,
