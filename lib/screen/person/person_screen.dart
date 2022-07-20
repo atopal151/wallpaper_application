@@ -118,7 +118,8 @@ class _PersonScreenState extends State<PersonScreen> {
           .doc('wallpapers/' + _firestore.collection("wallpapers").doc().id)
           .set({
         'wallpaper_pic': _url.toString(),
-        'shareuid': auth.currentUser!.email.toString()
+        'shareuid': auth.currentUser!.email.toString(),
+        'name': auth.currentUser!.displayName.toString()
       }, SetOptions(merge: true));
 
       debugPrint(_url);

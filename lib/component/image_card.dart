@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_application/screen/details/details_page.dart';
 
 class ImageCard extends StatefulWidget {
-  const ImageCard({Key? key, required this.image_path}) : super(key: key);
+  const ImageCard({Key? key, required this.image_path, required this.name})
+      : super(key: key);
   final String image_path;
+  final String name;
   @override
   State<ImageCard> createState() => _ImageCardState();
 }
@@ -26,6 +28,7 @@ class _ImageCardState extends State<ImageCard> {
               MaterialPageRoute(
                   builder: (context) => DetailsPage(
                         imgPath: widget.image_path,
+                        name: widget.name,
                       )),
             );
           },

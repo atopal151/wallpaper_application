@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -81,6 +82,7 @@ class _GetImageDatabaseState extends State<GetImageDatabase> {
                             MaterialPageRoute(
                                 builder: (context) => DetailsPage(
                                       imgPath: data['wallpaper_pic'].toString(),
+                                      name: data['name'].toString(),
                                     )));
                       },
                       child: Container(
