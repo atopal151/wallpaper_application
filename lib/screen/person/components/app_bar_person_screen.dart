@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../../component/component.dart';
 import '../../../component/sign_out.dart';
 
-AppBar PersonScreenAppBar(BuildContext context, String name) {
+AppBar PersonScreenAppBar(BuildContext context, String mail) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
@@ -22,11 +22,11 @@ AppBar PersonScreenAppBar(BuildContext context, String name) {
         text: TextSpan(
           style: Theme.of(context)
               .textTheme
-              .headline6!
+              .titleMedium!
               .copyWith(fontWeight: FontWeight.bold),
           children: [
             TextSpan(
-              text: " $name",
+              text: " $mail",
               style: TextStyle(color: kTextColor),
             ),
           ],
@@ -35,7 +35,9 @@ AppBar PersonScreenAppBar(BuildContext context, String name) {
     ),
     actions: <Widget>[
       IconButton(
-        icon: Image.asset("assets/icon/closeicon.png"),
+        icon: Image.asset(
+          "assets/icon/closeicon.png",
+        ),
         onPressed: () {
           gmailOutUser();
           debugPrint("Sign Out");

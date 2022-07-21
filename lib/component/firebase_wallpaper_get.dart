@@ -1,11 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:wallpaper_application/component/component.dart';
-import 'package:wallpaper_application/screen/home/components/app_bar_home_screen.dart';
 
 import '../screen/details/details_page.dart';
 
@@ -28,7 +24,6 @@ class _GetImageDatabaseState extends State<GetImageDatabase> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -67,6 +62,7 @@ class _GetImageDatabaseState extends State<GetImageDatabase> {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
                 return Card(
+                  color: Colors.grey,
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   semanticContainer: true,
                   elevation: 2,
@@ -83,6 +79,7 @@ class _GetImageDatabaseState extends State<GetImageDatabase> {
                                 builder: (context) => DetailsPage(
                                       imgPath: data['wallpaper_pic'].toString(),
                                       name: data['name'].toString(),
+                                      mail: data['shareuid'].toString(),
                                     )));
                       },
                       child: Container(

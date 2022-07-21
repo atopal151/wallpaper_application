@@ -41,45 +41,52 @@ class _PersonScreenState extends State<PersonScreen> {
     debugPrint(_firestore.collection("wallpapers").id);
     debugPrint(_firestore.collection("wallpapers").doc().id);
     return Scaffold(
-      appBar: PersonScreenAppBar(context, name),
+      appBar: PersonScreenAppBar(context, mailaddress),
       backgroundColor: Colors.white,
       body: Column(
         children: [
           Expanded(
             flex: 1,
-            child: Column(
+            child: Row(
               children: [
                 const SizedBox(
-                  height: 10,
+                  width: 20,
                 ),
                 CircleAvatar(
                   backgroundColor: Colors.white,
-                  radius: 60,
+                  radius: 50,
                   backgroundImage: NetworkImage(photo_url),
                 ),
                 const SizedBox(
-                  height: 10,
+                  width: 20,
                 ),
-                Center(
-                    child: Text(
-                  name,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w600, fontSize: 17),
-                )),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                    child: Text(
-                  mailaddress,
-                  style: const TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.w400),
-                )),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 17),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      mailaddress,
+                      style: const TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
           const Expanded(
-            flex: 2,
+            flex: 5,
             child: Center(
               child: GetImageDatabase(
                 column_count: 3,

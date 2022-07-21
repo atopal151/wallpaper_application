@@ -13,9 +13,9 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    FavoriteScreen(),
-    PersonScreen()
+    const HomeScreen(),
+    const FavoriteScreen(),
+    const PersonScreen()
   ];
 
   void _onItemTapped(int index) {

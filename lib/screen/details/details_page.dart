@@ -1,13 +1,14 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:wallpaper_application/component/component.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({Key? key, required this.imgPath, required this.name})
+  const DetailsPage(
+      {Key? key, required this.imgPath, required this.name, required this.mail})
       : super(key: key);
   final String imgPath;
   final String name;
+  final String mail;
   @override
   State<DetailsPage> createState() => _DetailsPageState();
 }
@@ -56,7 +57,8 @@ class _DetailsPageState extends State<DetailsPage> {
                               InkWell(
                                 child: const Icon(
                                   Icons.favorite,
-                                  size: 30,
+                                  size: 25,
+                                  color: Colors.red,
                                 ),
                                 onTap: () {},
                               ),
@@ -73,6 +75,11 @@ class _DetailsPageState extends State<DetailsPage> {
                                       style: const TextStyle(
                                           color: Colors.black, fontSize: 16),
                                     ),
+                                  ),
+                                  Text(
+                                    widget.mail,
+                                    style:
+                                        TextStyle(color: Colors.grey.shade600),
                                   ),
                                   const Text(
                                     'pexels.com',
@@ -94,9 +101,12 @@ class _DetailsPageState extends State<DetailsPage> {
                                 child: InkWell(
                                   child: const Icon(
                                     Icons.wallpaper,
+                                    color: Colors.white,
                                     size: 30,
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    _ApplyDialog(context);
+                                  },
                                 ),
                               ),
                             ],
@@ -116,4 +126,55 @@ class _DetailsPageState extends State<DetailsPage> {
       ),
     );
   }
+}
+
+Future<void> _ApplyDialog(BuildContext context) async {
+  return await showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: const Text('Apply Wallpaper'),
+          children: <Widget>[
+            SimpleDialogOption(
+              onPressed: () {},
+              child: const Text('Home Screen'),
+            ),
+            SimpleDialogOption(
+              onPressed: () {},
+              child: const Text('Lock Screen'),
+            ),
+            SimpleDialogOption(
+              onPressed: () {},
+              child: const Text('Both Screen'),
+            ),
+          ],
+        );
+      });
+}
+
+showAlertDialogApply(BuildContext context) {
+  Widget bothButton = FlatButton(
+    child: const Text('Both Screen'),
+    onPressed: () {},
+  );
+  Widget homeButton = FlatButton(
+    child: const Text('Home Screen'),
+    onPressed: () {},
+  );
+  Widget lockButton = FlatButton(
+    child: const Text('Lock Screen'),
+    onPressed: () {},
+  );
+
+  AlertDialog alertApply = AlertDialog(
+    title: const Text("Apply"),
+    actions: [bothButton, homeButton, lockButton],
+  );
+
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alertApply;
+      });
 }

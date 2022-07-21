@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_application/screen/details/details_page.dart';
 
 class ImageCard extends StatefulWidget {
-  const ImageCard({Key? key, required this.image_path, required this.name})
+  const ImageCard(
+      {Key? key,
+      required this.image_path,
+      required this.name,
+      required this.mail})
       : super(key: key);
   final String image_path;
   final String name;
+  final String mail;
   @override
   State<ImageCard> createState() => _ImageCardState();
 }
@@ -29,6 +34,7 @@ class _ImageCardState extends State<ImageCard> {
                   builder: (context) => DetailsPage(
                         imgPath: widget.image_path,
                         name: widget.name,
+                        mail: widget.mail,
                       )),
             );
           },
