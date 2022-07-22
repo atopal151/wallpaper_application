@@ -45,7 +45,7 @@ class _GetImageDatabaseState extends State<GetImageDatabase> {
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
-              return Text('Something went wrong');
+              return const Tooltip(message: 'Something went wrong');
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -61,12 +61,13 @@ class _GetImageDatabaseState extends State<GetImageDatabase> {
               children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
+
                 return Card(
                   color: Colors.grey,
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   semanticContainer: true,
                   elevation: 2,
-                  margin: EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -99,25 +100,3 @@ class _GetImageDatabaseState extends State<GetImageDatabase> {
         ));
   }
 }
-
-
-
-/*
-
-firestore get image
-
-  Future<void> getImage() async {
-    final result = await firebase_storage.FirebaseStorage.instance
-        .ref()
-        .child(widget.file_path)
-        .listAll();
-    imgList.clear();
-    result.items.forEach((firebase_storage.Reference ref) {
-      imgList
-          .add("gs://wallpaperapplication-c0ae6.appspot.com/${ref.fullPath}");
-      debugPrint(ref.root.toString());
-    });
-  }
-
-
- */
