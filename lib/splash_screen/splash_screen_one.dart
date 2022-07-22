@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_application/component/component.dart';
 import '../component/bottom_nav_bar.dart';
-import '../sign_page/sign_in_page.dart';
 
 class SplashScreenOne extends StatefulWidget {
   const SplashScreenOne({Key? key}) : super(key: key);

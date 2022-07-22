@@ -43,28 +43,3 @@ class _ImageCardState extends State<ImageCard> {
     );
   }
 }
-
-
-/*
-InkWell(
-      onTap: () {
-        debugPrint("Resme Basıldı");
-        Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (context) => DetailsPage(
-                    imgPath: image_path,
-                  )),
-        );
-      },
-      child: Hero(
-        tag: image_path,
-        child: Container(
-            height: 300,
-            width: (MediaQuery.of(context).size.width - 40) / 2,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                    fit: BoxFit.cover, image: AssetImage(image_path)))),
-      ),
-    );
-*/

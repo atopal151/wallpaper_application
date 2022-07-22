@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import '../../../component/component.dart';
 import '../../../component/sign_out.dart';
 
@@ -27,7 +25,7 @@ AppBar PersonScreenAppBar(BuildContext context, String mail) {
           children: [
             TextSpan(
               text: " $mail",
-              style: TextStyle(color: kTextColor),
+              style: const TextStyle(color: kTextColor),
             ),
           ],
         ),
