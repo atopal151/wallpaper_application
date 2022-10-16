@@ -1,17 +1,20 @@
 # wallpaper_application
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+It is a wallpaper application that you can use online.
 
-A few resources to get you started if this is your first Flutter project:
+Users who signed up for this project using Google can share their own wallpapers with other users or apply wallpapers shared by other users to their own devices.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<------------------>
+
+
+Online olarak kullanabileceğiniz bir duvar kağıdı uygulamasıdır.
+
+Bu projeye Google'ı kullanarak kaydolan kullanıcılar, kendi duvar kağıtlarını diğer kullanıcılarla paylaşabilir veya diğer kullanıcılar tarafından paylaşılan duvar kağıtlarını kendi cihazlarına uygulayabilir.
+
+
+
+
 "# wallpaper_application" 
