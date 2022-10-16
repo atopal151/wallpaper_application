@@ -18,3 +18,5 @@ Bu projeye Google'ı kullanarak kaydolan kullanıcılar, kendi duvar kağıtlar�
 
 
 "# wallpaper_application" 
+
+![wallbackgraphic](https://user-images.githubusercontent.com/45879059/196043839-e520776e-666c-4845-ad6d-1dfe421642cd.png)
